@@ -1,12 +1,14 @@
 package duplicate
 
 func FindDuplicate(nums []int) int {
-	for i, n := range nums {
-		for _, c := range nums[i+1:] {
-			if c == n {
-				return c
-			}
+	knownNums := make([]bool, len(nums))
+
+	for _, n := range nums {
+		if knownNums[n] {
+			return n
 		}
+
+		knownNums[n] = true
 	}
 
 	return -1

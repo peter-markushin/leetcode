@@ -22,3 +22,9 @@ func TestFindDuplicate(t *testing.T) {
 		}
 	}
 }
+
+func BenchmarkFindDuplicate(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		FindDuplicate(dupeTests[4].Nums)
+	}
+}
